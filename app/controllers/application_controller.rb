@@ -68,6 +68,7 @@ class ApplicationController < ActionController::Base
 
   def require_functional!
     redirect_to edit_user_registration_path unless current_user.functional?
+    ServerTiming::Auth.ok!
   end
 
   def after_sign_out_path_for(_resource_or_scope)
